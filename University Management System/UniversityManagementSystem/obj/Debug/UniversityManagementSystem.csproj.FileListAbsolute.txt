@@ -1,0 +1,110 @@
+E:\Csharp\0005\UniversityManagementSystem\obj\Debug\UniversityManagementSystem.csprojResolveAssemblyReference.cache
+E:\Csharp\0005\UniversityManagementSystem\bin\UniversityManagementSystem.dll.config
+E:\Csharp\0005\UniversityManagementSystem\bin\UniversityManagementSystem.dll
+E:\Csharp\0005\UniversityManagementSystem\bin\UniversityManagementSystem.pdb
+E:\Csharp\0005\UniversityManagementSystem\bin\Antlr3.Runtime.dll
+E:\Csharp\0005\UniversityManagementSystem\bin\EntityFramework.dll
+E:\Csharp\0005\UniversityManagementSystem\bin\EntityFramework.SqlServer.dll
+E:\Csharp\0005\UniversityManagementSystem\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Csharp\0005\UniversityManagementSystem\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Csharp\0005\UniversityManagementSystem\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\Csharp\0005\UniversityManagementSystem\bin\Microsoft.Owin.dll
+E:\Csharp\0005\UniversityManagementSystem\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Csharp\0005\UniversityManagementSystem\bin\Microsoft.Owin.Security.Cookies.dll
+E:\Csharp\0005\UniversityManagementSystem\bin\Microsoft.Owin.Security.dll
+E:\Csharp\0005\UniversityManagementSystem\bin\Microsoft.Owin.Security.Facebook.dll
+E:\Csharp\0005\UniversityManagementSystem\bin\Microsoft.Owin.Security.Google.dll
+E:\Csharp\0005\UniversityManagementSystem\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\Csharp\0005\UniversityManagementSystem\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Csharp\0005\UniversityManagementSystem\bin\Microsoft.Owin.Security.Twitter.dll
+E:\Csharp\0005\UniversityManagementSystem\bin\Microsoft.Web.Infrastructure.dll
+E:\Csharp\0005\UniversityManagementSystem\bin\Newtonsoft.Json.dll
+E:\Csharp\0005\UniversityManagementSystem\bin\Owin.dll
+E:\Csharp\0005\UniversityManagementSystem\bin\System.Web.Helpers.dll
+E:\Csharp\0005\UniversityManagementSystem\bin\System.Web.Mvc.dll
+E:\Csharp\0005\UniversityManagementSystem\bin\System.Web.Optimization.dll
+E:\Csharp\0005\UniversityManagementSystem\bin\System.Web.Razor.dll
+E:\Csharp\0005\UniversityManagementSystem\bin\System.Web.WebPages.Deployment.dll
+E:\Csharp\0005\UniversityManagementSystem\bin\System.Web.WebPages.dll
+E:\Csharp\0005\UniversityManagementSystem\bin\System.Web.WebPages.Razor.dll
+E:\Csharp\0005\UniversityManagementSystem\bin\WebGrease.dll
+E:\Csharp\0005\UniversityManagementSystem\bin\System.Web.Helpers.xml
+E:\Csharp\0005\UniversityManagementSystem\bin\System.Web.Mvc.xml
+E:\Csharp\0005\UniversityManagementSystem\bin\System.Web.Optimization.xml
+E:\Csharp\0005\UniversityManagementSystem\bin\System.Web.Razor.xml
+E:\Csharp\0005\UniversityManagementSystem\bin\System.Web.WebPages.xml
+E:\Csharp\0005\UniversityManagementSystem\bin\System.Web.WebPages.Deployment.xml
+E:\Csharp\0005\UniversityManagementSystem\bin\System.Web.WebPages.Razor.xml
+E:\Csharp\0005\UniversityManagementSystem\bin\Newtonsoft.Json.xml
+E:\Csharp\0005\UniversityManagementSystem\bin\Antlr3.Runtime.pdb
+E:\Csharp\0005\UniversityManagementSystem\bin\EntityFramework.xml
+E:\Csharp\0005\UniversityManagementSystem\bin\EntityFramework.SqlServer.xml
+E:\Csharp\0005\UniversityManagementSystem\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Csharp\0005\UniversityManagementSystem\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\Csharp\0005\UniversityManagementSystem\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Csharp\0005\UniversityManagementSystem\bin\Microsoft.Owin.xml
+E:\Csharp\0005\UniversityManagementSystem\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Csharp\0005\UniversityManagementSystem\bin\Microsoft.Owin.Security.xml
+E:\Csharp\0005\UniversityManagementSystem\bin\Microsoft.Owin.Security.Facebook.xml
+E:\Csharp\0005\UniversityManagementSystem\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Csharp\0005\UniversityManagementSystem\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Csharp\0005\UniversityManagementSystem\bin\Microsoft.Owin.Security.Google.xml
+E:\Csharp\0005\UniversityManagementSystem\bin\Microsoft.Owin.Security.Twitter.xml
+E:\Csharp\0005\UniversityManagementSystem\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\Csharp\0005\UniversityManagementSystem\obj\Debug\UniversityManagementSystem.dll
+E:\Csharp\0005\UniversityManagementSystem\obj\Debug\UniversityManagementSystem.pdb
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\UniversityManagementSystem.dll.config
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\UniversityManagementSystem.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\UniversityManagementSystem.pdb
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Antlr3.Runtime.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\EntityFramework.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\EntityFramework.SqlServer.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Microsoft.Owin.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Microsoft.Owin.Security.Cookies.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Microsoft.Owin.Security.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Microsoft.Owin.Security.Facebook.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Microsoft.Owin.Security.Google.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Microsoft.Owin.Security.Twitter.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Microsoft.Web.Infrastructure.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Newtonsoft.Json.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Owin.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\System.Web.Helpers.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\System.Web.Mvc.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\System.Web.Optimization.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\System.Web.Razor.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\System.Web.WebPages.Deployment.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\System.Web.WebPages.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\System.Web.WebPages.Razor.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\WebGrease.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\System.Web.Helpers.xml
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\System.Web.Mvc.xml
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\System.Web.Optimization.xml
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\System.Web.Razor.xml
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\System.Web.WebPages.xml
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\System.Web.WebPages.Deployment.xml
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\System.Web.WebPages.Razor.xml
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Newtonsoft.Json.xml
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Antlr3.Runtime.pdb
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\EntityFramework.xml
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\EntityFramework.SqlServer.xml
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Microsoft.Owin.xml
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Microsoft.Owin.Security.xml
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Microsoft.Owin.Security.Facebook.xml
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Microsoft.Owin.Security.Google.xml
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Microsoft.Owin.Security.Twitter.xml
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\obj\Debug\UniversityManagementSystem.csprojResolveAssemblyReference.cache
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\obj\Debug\UniversityManagementSystem.dll
+E:\Csharp\0005\CUET CSE\University Management System\UniversityManagementSystem\obj\Debug\UniversityManagementSystem.pdb

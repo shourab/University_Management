@@ -1,0 +1,111 @@
+﻿@using UniversityManagementSystem.Models
+@model UniversityManagementSystem.Models.CourseGOM
+
+@{
+    //Layout = null;
+    List<DepartmentGOM> departments = ViewBag.departments;
+    List<SemesterGOM>semester= ViewBag.semester;
+
+
+    string msg = @ViewBag.msg;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SaveCourse</title>
+
+    <style>
+        .field-validation-error {
+            color: red;
+            font-style: italic;
+        }
+    </style>
+
+</head>
+<body>
+
+    <br><br><br><br><br>
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <legend>Save Course</legend>
+
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(m => m.CourseCode)</td>
+                    <td>@Html.TextBoxFor(m => m.CourseCode)</td>
+                    <td>@Html.ValidationMessageFor(m => m.CourseCode)</td>
+                </tr>
+
+                <tr>
+                    <td>@Html.LabelFor(m => m.CourseName)</td>
+                    <td>@Html.TextBoxFor(m => m.CourseName)</td>
+                    <td>@Html.ValidationMessageFor(m => m.CourseName)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Credit)</td>
+                    <td>@Html.TextBoxFor(m => m.Credit)</td>
+                    <td>@Html.ValidationMessageFor(m => m.Credit)</td>
+                </tr>
+
+                <tr>
+                    <td>@Html.LabelFor(m => m.Description)</td>
+                    <td>@Html.TextAreaFor(m => m.Description, new { @class = "form-control" })</td>
+                    <td>@Html.ValidationMessageFor(m => m.Description)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.DeptId)</td>
+                    <td>@Html.DropDownListFor(m => m.DeptId, new SelectList(departments, "DeptId", "DeptName"), "--Select--")</td>
+                    <td>@Html.ValidationMessageFor(m => m.DeptId)</td>
+                </tr>
+
+                <tr>
+                    <td>@Html.LabelFor(m => m.SemesterId)</td>
+                    <td>@Html.DropDownListFor(m => m.SemesterId, new SelectList(semester, "SemesterId", "SemesterName"), "--Select--")</td>
+                    <td>@Html.ValidationMessageFor(m => m.SemesterId)</td>
+                </tr>
+
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" name="submit" id="submit" value="Save"/></td>
+                </tr>
+
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+
+            </table>
+
+
+            @if (@ViewBag.msg != null)
+            {
+                if (@msg.StartsWith("Please"))
+                {
+                    <i><font size="+2" color="Red"><label>Please Enter Unique Course</label></font></i>
+                }
+
+                else
+                {
+                    <font size="+2" color="Green"><label>Data Successfully Entered</label></font>
+                }
+
+            }
+
+        </fieldset>
+    }
+
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+</body>
+</html>

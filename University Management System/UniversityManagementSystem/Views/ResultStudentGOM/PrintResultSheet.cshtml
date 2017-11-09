@@ -1,0 +1,136 @@
+﻿
+@using Microsoft.Ajax.Utilities
+@using UniversityManagementSystem.Models
+@model ViewResultGOM
+
+@{
+    ViewBag.Title = "PrintResultSheet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    List<ViewResultGOM> studentResult = ViewBag.studentResult;
+
+    ViewResultGOM pass = new ViewResultGOM();
+    
+    foreach (var v in studentResult)
+    {
+
+        pass.PresentDate = v.PresentDate;
+        pass.StudentName =v.StudentName;
+        pass.StudentEmail = v.StudentEmail;
+        pass.StudentDeptName = v.StudentDeptName;
+        
+        break;
+    
+    }
+   
+}
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/DataTables/css/jquery-ui.min.css" rel="stylesheet" />
+
+    <style>
+        .field-validation-error {
+            color: red;
+            font-style: italic;
+        }
+    </style>
+
+</head>
+<body>
+
+<br><br><br><br><br>
+
+<div class="container">
+    <fieldset>
+        <legend>Result Sheet</legend>
+
+        <table>
+            <tr>
+                <td>
+                    @pass.PresentDate
+                </td>
+            </tr>
+            <tr></tr>
+            <tr></tr>
+
+            <tr>
+                <td>@Html.Label("Name")</td>
+                <td>@pass.StudentName</td>
+            </tr>
+
+            <tr>
+                <td>@Html.Label("Email")</td>
+                <td>@pass.StudentEmail</td>
+            </tr>
+            <tr>
+                <td>@Html.Label("Department")</td>
+                <td>@pass.StudentDeptName</td>
+            </tr>
+        </table>
+
+        <br/><br/><br/><br/>
+
+        <table border="1" Width="500">
+            <thead>
+            <tr>
+                <th>Course Code</th>
+                <th>Course Name</th>
+                <th>Grade</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            @foreach (ViewResultGOM v in studentResult)
+            {
+
+                <tr>
+                    <td>@v.CourseCode</td>
+                    <td>@v.CourseName</td>
+                    <td>@v.Grade</td>
+                </tr>
+
+            }
+            </tbody>
+        </table>
+
+        <br><br><br>
+
+        <a href="/ResultStudentGOM/index">View Another Student's Result</a>
+
+        @*<a href="/ResultStudentGOM / PrintResultSheet">.......Print.....</a>*@
+
+    </fieldset>
+
+
+</div>
+
+@*<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+        <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>*@
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,184 @@
+﻿@using UniversityManagementSystem.Models
+@model Resultsrb
+
+@{
+   // Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GenerateResult</title>
+</head>
+<body>
+
+    <br><br><br><br><br>
+
+<div>
+    <fieldset>
+        <legend>Save Student Result</legend>
+        @using (Html.BeginForm())
+        {
+            <table>
+                <tr style="padding: 20px;">
+
+                    <td>
+                        <label for="Studentreg">Student Reg NO</label>
+                    </td>
+                    <td>
+                        <select name="StudentId" id="Student">
+                            <option value="">--Select--</option>
+                            @{ List<StudentGom> students = ViewBag.students; }
+                            @foreach (var i in students)
+                            {
+                                <option value="@i.StudentId">@i.RegNo</option>
+                            }
+                        </select>
+                    </td>
+                    <td>@Html.ValidationMessageFor(m => m.StudentId)</td>
+                </tr><br/>
+                <tr style="padding: 20px;">
+                    <td><label>Name</label></td>
+                    <td> <input type="text" id="Name" name="Name"/></td>
+                </tr>
+                <tr style="padding: 20px;">
+                    <td><label>Email</label></td>
+                    <td> <input type="text" id="email"/></td>
+                </tr>
+                <tr style="padding: 20px;">
+                    <td><label>Department</label></td>
+                    <td> <input type="text" id="department"/></td>
+                </tr>
+                <tr style="padding: 20px;">
+                    <td><label>SELECT COURSE</label></td>
+                    <td>
+                        <select name="CourseId" id="CourseId">
+                            <option value="">--Select--</option>
+                        </select>
+                    </td>
+                    <td>@Html.ValidationMessageFor(m => m.CourseId)</td>
+                </tr>
+                <tr style="padding: 20px;">
+                    <td><label>SELECT Grade Letter</label></td>
+                    <td>
+                        <select name="Grade">
+                            <option value="">--select--</option>
+                            <option value="A+">A+</option>
+                            <option value="A">A</option>
+
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B">B</option>
+                            <option value="B-">B-</option>
+                            <option value="C+">C+</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="F">F</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr >
+                    <td></td>
+                    <td><button type="submit">Save</button></td>
+                </tr>
+            </table>
+        }
+        @if (ViewBag.success != null)
+        {
+            <p style="color: green;">@ViewBag.success</p>
+        }
+        @if (ViewBag.failed != null)
+        {
+            <p style="color: red;">@ViewBag.failed</p>
+        }
+
+    </fieldset>
+</div>
+
+
+
+
+
+
+
+</body>
+</html>
+
+@section scripts{
+
+
+
+
+    <script>
+        $(document).ready(function () {
+           
+            $("#Student").change(function () {
+               // alert("hello");
+                var studentId = $("#Student").val();
+                $("#Name").empty();
+                $("#email").empty();
+                $("#department").empty();
+                $("#CourseId").empty();
+
+               // alert(studentId);
+
+                var jon = { studentId: studentId };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("Getstudent", "Result")',
+                    url: '/EnrollStudentsrb/Getstudent',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(jon),
+                    success: function (data) {
+
+                        $.each(data, function (key, value) {
+                            $("#Name").val(value.Name);
+                            $("#email").val(value.Email);
+
+
+                        });
+                    }
+                });
+
+                $.ajax({
+                    type: "POST",
+                    //url: '@Url.Action("Getstudent", "Result")',
+                    url: '/EnrollStudentsrb/GetDepartment',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(jon),
+                    success: function (data) {
+
+                        $.each(data, function (key, value) {
+                            $("#department").val(value.NAME);
+
+
+
+                        });
+                    }
+                });
+
+                $.ajax({
+                    type: "POST",
+                    //url: '@Url.Action("GetCourse", "Result")',
+                    url: '/EnrollStudentsrb/GetCourse',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(jon),
+                    success: function (data) {
+
+                        $.each(data, function (key, value) {
+                            $("#CourseId").append('<option value="' + value.CourseId + '">' + value.CourseName + '</option>');
+
+
+
+                        });
+                    }
+                });
+
+
+            });
+           
+        });
+</script>
+}

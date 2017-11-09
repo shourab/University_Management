@@ -1,0 +1,266 @@
+﻿
+@using UniversityManagementSystem.Models
+@model ViewResultGOM
+
+@{
+    //Layout = null;
+    List<ViewResultGOM> students = ViewBag.resultList;
+}
+
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewResult</title>
+    <style>
+        .field-validation-error {
+            color: red;
+            font-style: italic;
+        }
+    </style>
+    
+</head>
+<body>
+
+    <br><br><br><br><br>
+<div class="container">
+    <form action="/ResultStudentGOM/PrintResultSheet" method="post" id="myForm" name="myForm">
+        <fieldset>
+            <legend>View Result</legend>
+
+            <table>
+
+                <tr>
+                    <td>@Html.LabelFor(m => m.StudentId)</td>
+
+                    <td>@Html.DropDownListFor(m => m.StudentId, new SelectList(students, "StudentId", "StudentRegNo"), "--Select--")</td>
+                    <td>@Html.ValidationMessageFor(m => m.StudentId)</td>
+
+                </tr>
+
+                <tr>
+                    <td>@Html.LabelFor(m => m.StudentName)</td>
+                    <td><input id="StudentName" name="StudentName" type="text" value="" readonly="true" size="60" placeholder="<View>"/></td>
+                    <td>@Html.ValidationMessageFor(m => m.StudentName)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.StudentEmail)</td>
+                    <td><input id="StudentEmail" name="StudentEmail" type="text" value="" readonly="true" size="60" placeholder="<View>"/></td>
+                    <td>@Html.ValidationMessageFor(m => m.StudentEmail)</td>
+                </tr>
+
+                <tr>
+                    <td>@Html.LabelFor(m => m.StudentDeptName)</td>
+                    <td><input id="StudentDeptName" name="StudentDeptName" type="text" value="" readonly="true" size="60" placeholder="<View>"/></td>
+                    <td>@Html.ValidationMessageFor(m => m.StudentDeptName)</td>
+                </tr>
+
+
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" name="submit" id="submit" value="Make Pdf"/></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @if (@ViewBag.msg != null)
+                        {
+                            @ViewBag.msg
+                        }
+                    </td>
+                </tr>
+
+            </table>
+
+            <br><br><br><br>
+            <table id="myTable" class="table table-bordered table-hover table-striped">
+                <thead>
+                <tr>
+                    <th>Course Code</th>
+                    <th>Name</th>
+                    <th>Grade</th>
+                </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+
+            <font color="red" size="+2"><label id="message" name="message"></label></font>
+
+        </fieldset>
+    </form>
+
+</div>
+
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+@section scripts
+{
+    <script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+            var table = $("#myTable").DataTable();
+            $("#StudentId").change(function() {
+                var studentId = $("#StudentId").val();
+
+
+                $("#myTable").hide();
+                $("#myTable").show();
+                table.clear().draw(false);
+
+                $("#tableBody").empty();
+
+
+                $("#StudentName").val("");
+                $("#StudentEmail").val("");
+                $("#StudentDeptName").val("");
+                $("#message").text("");
+
+
+                var json = { studentId: studentId };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetStudentsResultByStudentId", "ResultStudentGOM")',
+                    //url: '/ResultStudentGOM/GetStudentsResultByStudentId',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(json),
+                    success: function(data) {
+                        //alert(data);
+                        $.each(data, function(key, value) {
+                            //alert(key);
+                            //$("#StudentId").append('<option value="' + value.StudentId + '">' + value.StudentRegNo + '</option>');
+                            $("#tableBody").append('<tr><td>' + value.CourseCode + '</td><td>' + value.CourseName + '</td><td>' + value.Grade + '</td></tr>');
+                            table.row.add([
+                                value.CourseCode, value.CourseName, value.Grade
+                            ]).draw(false);
+
+                            if (value.CourseCode == null && value.StudentName != null) {
+                                $("#message").text("Result Sheet Is Not Created yet");
+                            }
+
+                            $("#StudentName").val(value.StudentName);
+                            $("#StudentEmail").val(value.StudentEmail);
+                            $("#StudentDeptName").val(value.StudentDeptName);
+
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}
+
+
+</body>
+</html>
+
+
+
+
+
+@*@{
+    ViewBag.Title = "Index";
+}
+
+
+@section style
+{
+
+    <link href="~/Content/DataTables/css/jquery.dataTables.css" rel="stylesheet" />
+}
+
+<h2>Index</h2>
+
+<form method="POST" id="myForm">
+    <table>
+        <tr>
+            <td>
+                <label for="departmentId">Select Department</label>
+            </td>
+            <td>
+                <select name="departmentId" id="departmentId">
+                    <option value="">Select...</option>
+                    @foreach (var department in ViewBag.Departments)
+                    {
+                        <option value="@department.DepartmentId">@department.Name</option>
+                    }
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td><label for="studentId">Select Student</label></td>
+            <td>
+                <select name="studentId" id="studentId"></select>
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Submit" class="btn btn-default" /></td>
+        </tr>
+    </table>
+</form>
+
+<table id="myTable" class="table table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Department Id</th>
+        </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+</table>
+
+@section scripts
+{
+    <script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+            var table = $("#myTable").DataTable();
+            $("#departmentId").change(function () {
+                var deptId = $("#departmentId").val();
+                $("#myTable").show();
+                table.clear().draw(false);
+                //$("#tableBody").empty();
+                $("#studentId").empty();
+                $("#studentId").append('<option value="">Select</option>');
+                var json = { departmentId: deptId };
+                $.ajax({
+                    type: "POST",
+                    //url: '@Url.Action("GetStudentsByDepartmentId", "ResultStudentGOM")',
+                    url: '/ResultStudentGOM/GetStudentsByDepartmentId',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(json),
+                    success: function (data) {
+                        //alert(data);
+                        $.each(data, function (key, value) {
+                            //alert(key);
+                            $("#studentId").append('<option value="' + value.StudentId + '">' + value.Name + '</option>');
+                            //$("#tableBody").append('<tr><td>' + value.StudentId + '</td><td>' + value.Name + '</td><td>' + value.DepartmentId + '</td></tr>');
+                            table.row.add([
+                                value.StudentId, value.Name, value.DepartmentId
+                            ]).draw(false);
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}*@
+
+
+
+
+
+

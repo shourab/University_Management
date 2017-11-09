@@ -1,0 +1,115 @@
+﻿@using UniversityManagementSystem.Models
+@model DepartmentGOM
+
+@{
+    //Layout = null;
+    string msg = ViewBag.msg;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet"/>
+
+    <style>
+        label.error {
+            color: red;
+            font: italic bold 12px/30px Georgia, serif;
+        }
+    </style>
+
+</head>
+<body>
+    <br><br><br><br><br>
+
+<div class="container">
+    <h1 class="alert-info">Save Department</h1>
+    <br/>
+    <form method="POST" id="ourForm" name="ourForm">
+        <div class="form-group">
+            <label for="DeptCode" class="active">Code:</label>
+            <input type="text" class="form-control" id="DeptCode" name="DeptCode">
+        </div>
+        <div class="form-group">
+            <label for="DeptName" class="active">Name:</label>
+            <input type="text" class="form-control" id="DeptName" name="DeptName">
+        </div>
+
+        <button type="submit" class="btn btn-default" name="submit">Save</button>
+    </form>
+
+    <br><br/>
+
+    @if (msg != null)
+    {
+        if (msg.StartsWith("Please"))
+        {
+            <div class="alert-danger">
+                <strong>Failed!</strong>@msg
+            </div>
+        }
+
+        else if (msg.StartsWith("Insertion"))
+        {
+            <div class="alert-danger">
+                <strong>Failed!</strong>@msg
+            </div>
+        }
+
+        else
+        {
+            <div class="alert alert-success">
+                <strong>Success!</strong>@msg
+            </div>
+        }
+    }
+
+    <a href="/DepartmentGOM/ShowDepartment">
+        <h5 class="alert-link">View All Department</h5></a>
+
+</div>
+
+
+
+@section scripts
+{
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#ourForm").validate({
+                rules: {
+                    DeptCode: {
+                        required: true,
+                        minlength: 2,
+                        maxlength: 7
+                    },
+                    DeptName: "required"
+                },
+                messages: {
+                    DeptCode: {
+                        required: "Please Provide A Code",
+                        minlength: "DepartmentGOM Code Must Contain More Than 1 Character",
+                        maxlength: "DepartmentGOM Code Must Contain Less Than 7 Character"
+                    },
+
+                    DeptName: "Please Provide A Name"
+                }
+            });
+
+        });
+    </script>
+
+}
+
+
+
+
+
+</body>
+        </html>

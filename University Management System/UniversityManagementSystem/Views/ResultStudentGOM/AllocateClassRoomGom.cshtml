@@ -1,0 +1,223 @@
+﻿
+@{
+    ViewBag.Title = "AllocateClassRoomGom";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using System.Drawing
+@using UniversityManagementSystem.Models
+@model UniversityManagementSystem.Models.ClassRoomGOM
+
+@{
+    
+    List<DepartmentGOM> departments = ViewBag.departments;
+    List<ClassRoomGOM> classRoom = ViewBag.classRoom;
+
+    List<ClassRoomGOM> day = ViewBag.day;
+
+
+    List<ClassRoomGOM> nullList = ViewBag.nullList;
+    //List<SemesterGOM> semester = ViewBag.semester;
+
+
+    string msg = ViewBag.msg;
+    
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Allocate Classroom</title>
+
+    <style>
+        .field-validation-error {
+            color: red;
+            font-style: italic;
+        }
+    </style>
+
+    <link href="~/Content/DataTables/css/jquery-ui.min.css" rel="stylesheet"/>
+    <link href="~/Content/jquery.timepicker.css" rel="stylesheet" />
+
+</head>
+<body>
+
+<br><br><br><br><br>
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <legend>Allocate Classroom</legend>
+
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(m => m.DeptId)</td>
+                    <td>@Html.DropDownListFor(m => m.DeptId, new SelectList(departments, "DeptId", "DeptName"), "--Select--")</td>
+                    <td>@Html.ValidationMessageFor(m => m.DeptId)</td>
+                </tr>
+
+                <tr>
+                    <td>@Html.LabelFor(m => m.CourseId)</td>
+                    <td>@Html.DropDownListFor(m => m.CourseId, new SelectList(nullList, "CourseId", "CourseName"), "--Select--")</td>
+                    <td>@Html.ValidationMessageFor(m => m.CourseId)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.RoomId)</td>
+                    <td>@Html.DropDownListFor(m => m.RoomId, new SelectList(classRoom, "RoomId", "RoomNo"), "--Select--")</td>
+                    <td>@Html.ValidationMessageFor(m => m.RoomId)</td>
+                </tr>
+
+                <tr>
+
+                    <td>@Html.LabelFor(m => m.DayId)</td>
+                    <td>@Html.DropDownListFor(m => m.DayId, new SelectList(day, "DayId", "DayName"), "--Select--")</td>
+                    <td>@Html.ValidationMessageFor(m => m.DayId)</td>
+                </tr>
+
+
+                <tr>
+                    <td>@Html.LabelFor(m => m.ScheduledFrom)</td>
+                    <td>@Html.TextBoxFor(m => m.ScheduledFrom)</td>
+                    <td>@Html.ValidationMessageFor(m => m.ScheduledFrom)</td>
+                </tr>
+
+                <tr>
+                    <td>@Html.LabelFor(m => m.ScheduledTo)</td>
+                    <td>@Html.TextBoxFor(m => m.ScheduledTo)</td>
+                    <td>@Html.ValidationMessageFor(m => m.ScheduledTo)</td>
+                </tr>
+
+
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" name="submit" id="submit" value="Allocate"/></td>
+                </tr>
+
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+
+            </table>
+
+            <br/><br/>
+
+            @if (@ViewBag.msg != null)
+            {
+                if (msg.Contains("Already"))
+                {
+                    <I><font size="+2" color="Red"><label>@ViewBag.msg</label></font></I>
+                }
+
+                else
+                {
+                    <font size="+2" color="Green"><label>@ViewBag.msg</label></font>
+                }
+
+
+            }
+
+
+
+
+        </fieldset>
+    }
+
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+@section style
+{
+    <link href="~/Content/DataTables/css/jquery.dataTables.css" rel="stylesheet"/>
+    <link href="~/Content/jquery.timepicker.css" rel="stylesheet"/>
+
+}
+
+
+
+
+
+
+
+
+
+
+@section scripts{
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+<script src="~/Scripts/jquery.timepicker.min.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            
+
+            $('#ScheduledFrom').timepicker({ 'timeFormat': 'h:i A' });
+            $('#ScheduledTo').timepicker({ 'timeFormat': 'h:i A' });
+
+
+
+            $("#DeptId").change(function() {
+                var deptId = $("#DeptId").val();
+
+                $("#CourseId").empty();
+                $("#CourseId").append('<option value="">--Select--</option>');
+                var json = { deptId: deptId };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetCourseByDeptId", "ResultStudentGOM")',
+
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(json),
+                    success: function(data) {
+
+                        $.each(data, function(key, value) {
+
+                            $("#CourseId").append('<option value="' + value.CourseId + '">' + value.CourseName + '</option>');
+
+                        });
+                    }
+                });
+            });
+
+
+        });
+
+
+        
+
+    </script>
+
+}
+
+
+
+
+

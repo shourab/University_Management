@@ -1,0 +1,117 @@
+﻿@using UniversityManagementSystem.Models
+@model ViewResultGOM
+
+@{
+    Layout = null;
+    List<ViewResultGOM> students = ViewBag.resultList;
+}
+
+
+@section style
+{
+    <link href="~/Content/DataTables/css/jquery.dataTables.css" rel="stylesheet" />
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewResult</title>
+    <style>
+        .field-validation-error {
+            color: red;
+            font-style: italic;
+        }
+    </style>
+
+</head>
+<body>
+
+    <br><br><br><br><br>
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <legend>View Result</legend>
+
+            <table>
+
+
+                <tr>
+                    <td>@Html.LabelFor(m => m.StudentId)</td>
+                    <td>@Html.DropDownListFor(m => m.StudentId, new SelectList(students, "StudentId", "StudentRegNo"), "--Select--")</td>
+                    <td>@Html.ValidationMessageFor(m => m.StudentId)</td>
+
+                </tr>
+
+                <tr>
+                    <td>@Html.LabelFor(m => m.StudentName)</td>
+                    <td>@Html.TextBoxFor(m => m.StudentName)</td>
+                    <td>@Html.ValidationMessageFor(m => m.StudentName)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.StudentEmail)</td>
+                    <td>@Html.TextBoxFor(m => m.StudentEmail)</td>
+                    <td>@Html.ValidationMessageFor(m => m.StudentEmail)</td>
+                </tr>
+
+                <tr>
+                    <td>@Html.LabelFor(m => m.StudentDeptName)</td>
+                    <td>@Html.TextBoxFor(m => m.StudentDeptName)</td>
+                    <td>@Html.ValidationMessageFor(m => m.StudentDeptName)</td>
+                </tr>
+
+
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" name="submit" id="submit" value="Save"/></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @if (@ViewBag.msg != null)
+                        {
+                            @ViewBag.msg
+                        }
+                    </td>
+                </tr>
+
+            </table>
+
+        </fieldset>
+    }
+
+</div>
+
+@*<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+        <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>*@
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+@*<script>
+        $(document).ready(function () {
+            $("#RegDate").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                yearRange: '1945:2099'
+
+                //yearRange: '1945:' + (new Date).getFullYear()
+
+                //minDate: new Date(1950, 10, 30),
+                //maxDate: new Date(2099, 2, 5),
+            });
+        })
+
+    </script>
+*@
+
+</body>
+</html>
+

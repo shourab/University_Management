@@ -1,0 +1,155 @@
+﻿@using UniversityManagementSystem.Models
+@model StudentGom
+
+
+@{
+    ViewBag.Title = "ViewRegisteredStudent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    StudentGom student = ViewBag.registeredStudent;
+    
+    
+}
+
+
+
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/DataTables/css/jquery-ui.min.css" rel="stylesheet" />
+
+    <style>
+        .field-validation-error {
+            color: red;
+            font-style: italic;
+        }
+    </style>
+
+</head>
+<body>
+
+
+<br><br><br><br><br>
+
+<div class="container">
+    <fieldset>
+        <legend>View Registered Student</legend>
+
+        <table>
+
+            <tr>
+                <td>
+                    @student.PresentDate
+                </td>
+            </tr>
+
+
+            @if (@student.Email != null)
+            {
+
+                <tr>
+                    <td>@Html.LabelFor(m => m.RegNo) : </td>
+                    <td>@student.RegNo</td>
+
+                </tr>
+
+
+                <tr>
+                    <td>@Html.LabelFor(m => m.Name) : </td>
+                    <td>@student.Name</td>
+
+                </tr>
+
+                <tr>
+                    <td>@Html.LabelFor(m => m.Email) : </td>
+                    <td>@student.Email</td>
+
+                </tr>
+
+                <tr>
+                    <td>@Html.LabelFor(m => m.DeptName) : </td>
+                    <td>@student.DeptName (@student.DeptCode)</td>
+
+                </tr>
+
+
+
+                <tr>
+                    <td>@Html.LabelFor(m => m.ContactNo) : </td>
+                    <td>@student.ContactNo</td>
+
+                </tr>
+
+                <tr>
+                    <td>@Html.LabelFor(m => m.Address) : </td>
+                    <td>@student.Address</td>
+
+                </tr>
+
+            }
+
+
+            else
+            {
+                <tr>
+                    <td><i><font size="+2" color="Red">@student.RegNo</font></i></td>
+                </tr>
+            }
+
+
+
+
+
+
+
+
+            <tr>
+                <td>
+                    @if (@ViewBag.msg != null)
+                    {
+                        @ViewBag.msg
+                    }
+                </td>
+            </tr>
+
+        </table>
+
+
+        <a href="/DepartmentGom/RegisterStudent">Register New Student</a>
+
+    </fieldset>
+
+
+</div>
+
+@*<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+        <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>*@
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+@*@*<script>
+        $(document).ready(function () {
+            $("#RegDate").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                yearRange: '1945:2099'
+
+
+            });
+        })
+
+    </script>*@
+
+</body>
+</html>
+
+
+
+

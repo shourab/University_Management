@@ -1,0 +1,195 @@
+﻿@using UniversityManagementSystem.Models
+@model UniversityManagementSystem.Models.EnrollCourse
+
+@{
+   // Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+
+
+<head>
+    <style>
+        label.error {
+            color: red;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width"/>
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet"/>
+    @*<link href="~/Content/DataTables/css/buttons.jqueryui.min.css" rel="stylesheet" />*@
+    <title>Enroll</title>
+</head>
+<body>
+
+    <br /><br /><br /><br /><br />
+<div>
+    <fieldset>
+        <legend>Enroll in a Course</legend>
+        <form id="myform"method="POST">
+
+            <table>
+                <tr>
+
+                    <td>
+                        <label for="Studentreg">Student Reg NO</label>
+                    </td>
+                    <td>
+                        <select name="StudentId" id="Student">
+                            <option value="">--Select--</option>
+                            @{ List<StudentGom> students = ViewBag.students; }
+                            @foreach (var i in students)
+                            {
+                                <option value="@i.StudentId">@i.RegNo</option>
+                            }
+                        </select>
+                    </td>
+                    <td>@Html.ValidationMessageFor(m => m.StudentId)</td>
+                </tr>
+                <tr>
+                    <td><label>Name</label></td>
+                    <td> <input type="text" id="Name" name="Name"/></td>
+                </tr>
+                <tr>
+                    <td><label>Email</label></td>
+                    <td> <input type="text" id="email"/></td>
+                </tr>
+                <tr>
+                    <td><label>Department</label></td>
+                    <td> <input type="text" id="department"/></td>
+                </tr>
+                <tr>
+                    <td><label>SELECT COURSE</label></td>
+                    <td>
+                        <select name="CourseId" id="CourseId"></select>
+                    </td>
+                    <td>@Html.ValidationMessageFor(m => m.CourseId)</td>
+                </tr>
+                <tr>
+                    <td><label>Date</label></td>
+                    <td><input type="text" id="Date" name="EnrollDate"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button type="submit">EnRoll</button></td>
+                </tr>
+            </table>
+        </form>
+        @if (ViewBag.success != null)
+        {
+            <p style="color: green;">@ViewBag.success</p>
+        }
+        @if (ViewBag.failed != null)
+        {
+            <p style="color: red;">@ViewBag.failed</p>
+        }
+    </fieldset>
+</div>
+
+
+
+
+</body>
+</html>
+   
+
+@section scripts
+{
+
+    @*<script src="~/Scripts/jquery-1.12.4.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>*@
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#Date").datepicker({
+                changeMonth: true,
+                changeYear: true
+            });
+
+
+            $("#myform").validate({
+                rules: {
+                    StudentId: "required",
+                    CourseId: "required",
+                    Date: "required",
+                    EnrollDate:"required"
+                },
+                message: {
+                    StudentId:"Please Select The Student"
+                }
+            });
+            $("#Student").change(function () {
+               // alert("hello");
+                var studentId = $("#Student").val();
+                $("#Name").empty();
+                $("#email").empty();
+                $("#department").empty();
+                $("#CourseId").empty();
+
+               // alert(studentId);
+
+                var jon = { studentId: studentId };
+                $.ajax({
+                    type: "POST",
+                    //url: '@Url.Action("Getstudent", "EnrollStudentsrb")',
+                    url: '/EnrollStudentsrb/Getstudent',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(jon),
+                    success: function (data) {
+
+                        $.each(data, function (key, value) {
+                            $("#Name").val(value.Name);
+                            $("#email").val(value.Email);
+                           
+
+                        });
+                    }
+                });
+
+                $.ajax({
+                    type: "POST",
+                    //url: '@Url.Action("Getstudent", "EnrollStudentsrb")',
+                    url: '/EnrollStudentsrb/GetDepartment',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(jon),
+                    success: function (data) {
+
+                        $.each(data, function (key, value) {
+                            $("#department").val(value.NAME);
+                           
+
+
+                        });
+                    }
+                });
+
+                $.ajax({
+                    type: "POST",
+                    //url: '@Url.Action("GetCourse", "EnrollStudentsrb")',
+                    url: '/EnrollStudentsrb/GetCourse',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(jon),
+                    success: function (data) {
+
+                        $.each(data, function (key, value) {
+                            $("#CourseId").append('<option value="' + value.CourseId + '">' + value.CourseName + '</option>');
+
+
+
+                        });
+                    }
+                });
+
+
+            });
+            
+        });
+    </script>
+}

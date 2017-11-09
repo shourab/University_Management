@@ -1,0 +1,49 @@
+﻿
+@using System.Web.UI.WebControls
+@using UniversityManagementSystem.Models
+@model IEnumerable<DepartmentGOM>
+
+    @{
+        //Layout = null;
+        List<DepartmentGOM> departments = ViewBag.departments;
+    }
+
+    <!DOCTYPE HTML>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>ShowDepartmentGOM</title>
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <script src="~/Scripts/jquery-1.10.2.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+
+    </head>
+    <body>
+
+        <br><br><br><br><br>
+    <div class="container">
+        <h1 class="alert-info">View All Department</h1>
+        <br/>
+        <table class="table table-striped table-bordered table-hover table-condensed table-responsive ">
+            <thead>
+            <th>Code </th>
+            <th>Name</th>
+            </thead>
+            <tbody>
+            @foreach (DepartmentGOM d in departments)
+            {
+                <tr>
+                    <td>@d.DeptCode</td>
+                    <td>@d.DeptName</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+
+        <a href="/DepartmentGOM/Index">
+            <h5 class="alert-link">Save Department</h5></a>
+
+    </div>
+    </body>
+</html>
